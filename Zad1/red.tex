@@ -1,0 +1,102 @@
+\documentclass{article}
+\usepackage[polish]{babel}
+\usepackage[T1]{ fontenc}
+\usepackage[utf8]{ inputenc}
+\usepackage{geometry}
+
+\title{PIZZO - Zadanie domowe nr 1}
+\geometry{margin=1in}
+\author{Adrian Urbański}
+\date{}
+
+\begin{document}
+\maketitle
+\paragraph{Podpunkt a)}
+$3COL\leq_{p}Tutorzy$ \\
+
+Pokażę, że $3COL\leq_{p}4COL$:\\
+Zdefiniujmy funkcję $\Phi:G(V,E) \rightarrow G'(V',E')$ jako:\\
+Jeśli $V = \{v_{1}, v_{2}, v_{3}, \cdots, v_{n}\}$, to $V' =
+\{v_{1}^{1},v_{1}^{2},v_{2}^{1},v_{2}^{2},v_{3}^{1},v_{3}^{2}, \cdots,
+v_{n}^{1}, v_{n}^{2}\}$. Wtedy:\\
+$\forall i \in \{1,2,3,\cdots,n\}:  (v_{i}^{1},v_{i}^{2})\in E' \wedge \forall
+(v_{i}, v_{j})\in E: [ (v_{i}^{1},v_{j}^{1})\in E' \wedge (v_{i}^{1},
+v_{j}^{2})\in E' \wedge (v_{i}^{2}, v_{j}^{1})\in E' ]$. \\
+Wtedy $"\Phi"$ jest redukcją wielomianową:
+\begin{enumerate}
+  \item $\Phi$ jest obliczalna w czasie wielomianowym - łatwo napisać program
+    który tak przekształca graf
+  \item G jest 3-kolorowalny wtw. gdy $\Phi(G)$ jest 4-kolorowalny
+    \begin{itemize}
+      \item[$"\Rightarrow"$]
+        Weźmy 3-kolorowanie $C: V \rightarrow \{r, g, b\}$.\\
+        Zdefiniujmy 4-kolorowanie $C': V' \rightarrow \{r, g, b, y\}$ takie, że:\\
+        $C'(v_{i}^{1}) = r \Leftrightarrow C(V_{i}) = r $ i analogicznie dla g i b,
+        oraz $\forall i: C'(v_{i}^{2}) = y$.\\
+        Skoro C jest poprawnym kolorowaniem, to $\forall
+        (v_{i}^{1},v_{j}^{1})\in E': C'(V_{i}^{1}) \neq C'(V_{j}^{1})$.\\
+        W dodatku, $\forall i, j: (v_{i}^{2}, v_{j}^{2})\notin E'$, co wynika z
+        konstrukcji $\Phi$, oraz $\forall i, j: C'(v_{i}^{2})=y\neq
+        C'(v_{j}^{1})$ z definicji C'.\\
+        Zatem $C'(\Phi(G))$ jest poprawnym kolorowaniem.
+      \item[$"\Leftarrow"$]
+        Weźmy 4-kolorowanie $C': V' \rightarrow \{r, g, b, y\}$. Wtedy:\\
+        Niech
+        $C(v_{i})=\left\{
+        \begin{array}{ll}
+          $r, gdy  $v_{i}^{1}=r \lor v_{i}^{2}=r\\
+          $g, gdy  $v_{i}^{1}=g \lor v_{i}^{2}=g \land v_{i}^{1}\neq r \land
+          v_{i}^{2}\neq r\\
+          $b, wpp$
+        \end{array}
+        \right.$
+        Wtedy:\\
+        C jest 3-kolorowaniem, co wynika z konstrukcji $\Phi$
+    \end{itemize}
+\end{enumerate}
+
+Pokażę, że $4COL\leq_{p}Tutorzy:$\\
+Zdefiniujmy funkcję $\Psi:G(V,E) \rightarrow T(S,K)$, gdzie S jest zbiorem
+studentów, a K - konflików ($(s_{i}, s_{j})\in K$ oznacza, że $s_{i}$ zrzędzi na
+$s_{j}$), jako:\\
+$\forall i: v_{i}\in V \Leftrightarrow s_{i}\in S \land \forall i, j: (v_{i},
+v_{j})\in E \Leftrightarrow (s_{i}, s_{j})\in K$.\\ Wtedy $\Psi$ jest redukcją wielomianową:\\
+\begin{enumerate}
+  \item $\Psi$ jest obliczalna w czasie wielomianowym - łatwo napisać taki program
+  \item G jest 4-kolorowalny wtw. gdy $\Psi(G)$ jest poprawnym przydzieleniem tutorów.
+    \begin{itemize}
+      \item[$"\Rightarrow"$]
+        Weźmy 4-kolorowanie $C: V \rightarrow \{r, g, b, y\}$.\\
+        Zdefiniujmy przydział tutorów $P: S \rightarrow \{t_{1}, t_{2},
+        t_{3}, t_{4}\}$ takie, że:\\
+        $P(s_{i}) = t_{1} \Leftrightarrow C(V_{i}) = r $ i analogicznie dla
+        $t_{2}$ i g, $t_{3}$ i b oraz $t_{4}$ i y.\\
+        Skoro C jest poprawnym kolorowaniem, to $\forall
+        (s_{i},s_{j})\in K: P(s_{i}) \neq P(V_{j})$. Wtedy:\\
+        Zatem $P(\Psi(G))$ jest poprawnym przydzieleniem tutorów.
+      \item[$"\Leftarrow"$]
+        Weźmy przydział tutorów P. Wtedy:\\
+        Niech $C(v_{i})=\left\{
+        \begin{array}{ll}$
+          r, gdy $P(s_{i})=t_{1}\\$
+          g, gdy $P(s_{i})=t_{2}\\$
+          b, gdy $P(s_{i})=t_{3}\\$
+          y, wpp $\\
+          \end{array}
+        \right.\\$
+        Wtedy C jest 4-kolorowaniem, co wynika z konstrukcji $\Psi$.
+    \end{itemize}
+\end{enumerate}
+
+Skoro $3COL\leq_{p}4COL \land 4COL\leq_{p}Tutorzy$, to z (przechodniości relacji
+$\leq_{p}$) $3COL\leq_{p}Tutorzy$
+
+\paragraph{Podpunkt b)} Jeśli jest co najwyżej 15 zrzęd, to problem Tutorzy jest
+wielomianowy\\
+
+Numerujemy tutorów od 1 do 4. Generujemy wszystkie możliwości (jest ich $4^{15}$) przydzielenia
+tutorów zrzędom i dla każdej takiej możliwości dla każdego studenta (jest ich n)
+sprawdzamy którego tutora możemy mu przydzielić (musimy sprawdzić wszystkie
+osoby na które zrzędzono, jest ich co najwyżej $15*n$). Złożoność takiego
+podejścia wynosi O($4^{15}*n*15*n$) = O($n^{2}$).
+\end{document}
