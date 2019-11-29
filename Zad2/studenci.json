@@ -1,0 +1,7 @@
+{"studenci": 4,
+ "konflikty": [
+     {"zrzeda": 1, "nielubiany": 2},
+     {"zrzeda": 1, "nielubiany": 3},
+     {"zrzeda": 2, "nielubiany": 1}
+ ]
+}
