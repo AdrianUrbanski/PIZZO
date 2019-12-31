@@ -1,0 +1,16 @@
+{
+    "parametry": ["kalorie","białko"],
+    "składniki": [{"nazwa": "ziemniak",
+                   "kalorie": 60.0,
+                   "białko": 2.02},
+                  {"nazwa": "kostka czekolady",
+                   "kalorie": 34.1,
+                   "białko": 0.3},
+                  {"nazwa": "pierog",
+                   "kalorie": 42.80,
+                   "białko": 3.14}
+                 ],
+    "konflikty": [{"nazwa1": "ziemniak", "nazwa2": "kostka czekolady"}],
+    "cel": {"kalorie": {"min": 700, "max": 750},
+            "białko": {"min": 30, "max": 35}}
+}
