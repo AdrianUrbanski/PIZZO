@@ -2,7 +2,7 @@
     "parametry": ["kalorie","białko","żelazo"],
     "składniki": [{"nazwa": "ziemniak",
                    "kalorie": 60.0,
-                   "białko": 2.42,
+                   "białko": 2.02,
                    "żelazo": 0.65},
                   {"nazwa": "kostka czekolady",
                    "kalorie": 34.1,

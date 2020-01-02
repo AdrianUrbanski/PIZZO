@@ -1,1 +1,1 @@
-python zad3.py
+python3 zad3.py
